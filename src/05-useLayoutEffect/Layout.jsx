@@ -1,7 +1,8 @@
+import { useLayoutEffect } from "react";
 import { useFetch, useCounter } from "../hooks/";
-import Quotes from "./Quotes";
+import Quotes from "../03-examples/Quotes";
 
-const MultipleCustomHooks = () => {
+const Layout = () => {
   const { counter, increment } = useCounter(1);
   const { data, isLoading, error } = useFetch(
     `https://rickandmortyapi.com/api/character/${counter}`
@@ -15,12 +16,9 @@ const MultipleCustomHooks = () => {
         <div className="alert alert-info text-end">Loading...</div>
       ) : (
         <blockquote className="blockquote text-right">
-          <p className="mb-1 ">{data.name}</p>
+          <Quotes quote={data.name} />
           <img src={data.image} alt="rnm" />
-          <p className="mb-1">{data.species}</p>
-          <footer className="blockquotes-footer">
-            Luis Linares button Clicker
-          </footer>
+          <Quotes author={data.species} />
         </blockquote>
       )}
       <button
@@ -34,4 +32,4 @@ const MultipleCustomHooks = () => {
   );
 };
 
-export default MultipleCustomHooks;
+export default Layout;
