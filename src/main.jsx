@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
-import CallBackHook from "./06-Memos/CallBackHook";
+import { Padre } from "./07-tarea-memo/Padre";
+// import CallBackHook from "./06-Memos/CallBackHook";
 // import MemorizeHook from "./06-Memos/MemoHook";
 // import Memorize from "./06-Memos/Memorize";
 // import MultipleCustomHooks from "./03-examples/MultipleCustomHooks";
@@ -16,6 +17,6 @@ import CallBackHook from "./06-Memos/CallBackHook";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
-  <CallBackHook />
+  <Padre />
   //</React.StrictMode>
 );
