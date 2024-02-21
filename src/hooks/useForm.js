@@ -1,26 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState } from 'react';
 
 const useForm = (initialForm = {}) => {
 
     const [formState, setFormState] = useState(initialForm);
 
-    const onInputchange = ({ target }) => {
-        const { name, value } = target
+    const onInputChange = ({ target }) => {
+        const { name, value } = target;
         setFormState({
             ...formState,
             [name]: value
-        })
+        });
     }
 
     const onResetForm = () => {
-        setFormState(initialForm)
+        setFormState(initialForm);
     }
-
 
     return {
         ...formState,
-        formState, onInputchange, onResetForm
+        formState,
+        onInputChange,
+        onResetForm,
     }
 }
 
-export default useForm
+export default useForm;

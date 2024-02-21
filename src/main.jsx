@@ -2,7 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
-import { Padre } from "./07-tarea-memo/Padre";
+import TodoApp from "./08-useReducer/TodoApp";
+// import "./08-useReducer/intro-reducer";
+// import { Padre } from "./07-tarea-memo/Padre";
 // import CallBackHook from "./06-Memos/CallBackHook";
 // import MemorizeHook from "./06-Memos/MemoHook";
 // import Memorize from "./06-Memos/Memorize";
@@ -17,6 +19,6 @@ import { Padre } from "./07-tarea-memo/Padre";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
-  <Padre />
+  <TodoApp />
   //</React.StrictMode>
 );
