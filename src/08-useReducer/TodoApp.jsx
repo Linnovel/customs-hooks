@@ -1,54 +1,22 @@
-import React, { useEffect, useReducer } from "react";
-import { todoReducer } from "./todoReducer";
 import TodoList from "../components/TodoList";
 import { TodoAdd } from "../components/TodoAdd";
+import { useTodo } from "../hooks/";
 
-const initialState = [
-  // {
-  //   id: new Date().getTime(),
-  //   description: "Recolectar la piedra del Alma",
-  //   done: false,
-  // },
-];
-
-const init = () => {
-  return JSON.parse(localStorage.getItem("todos")) || [];
-};
-
+//Function
 const TodoApp = () => {
-  const [todos, dispatch] = useReducer(todoReducer, initialState, init);
-
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
-
-  const handleNewTodo = (todo) => {
-    const action = {
-      type: "[TODO] Add Todo",
-      payload: todo,
-    };
-    dispatch(action);
-  };
-
-  const handleDeleteTodo = (id) => {
-    dispatch({
-      type: "[TODO]Remove Todo",
-      payload: id,
-    });
-  };
-
-  const handleToggleTodo = (id) => {
-    // console.log({ id });
-    dispatch({
-      type: "[TODO] Toggle Todo",
-      payload: id,
-    });
-  };
+  const {
+    todos,
+    todosCount,
+    pendingTodosCount,
+    handleDeleteTodo,
+    handleNewTodo,
+    handleToggleTodo,
+  } = useTodo();
 
   return (
     <>
       <h1>
-        TODOAP : 10, <small>Pendientes:2</small>
+        TODO APP :{todosCount} ,<small>Pendientes: {pendingTodosCount}</small>
       </h1>
       <hr />
       <div className="row">
@@ -59,7 +27,7 @@ const TodoApp = () => {
             onDeleteTodo={handleDeleteTodo}
           />
         </div>
-        <h4>Agregar TODO</h4>
+        <h4>Agregar un tarea</h4>
         <div className="col-5">
           <hr />
           <TodoAdd onNewTodo={handleNewTodo} />
